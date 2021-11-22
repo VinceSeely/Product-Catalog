@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace UnitTests
+namespace Product_Catalog
 {
     public class Tests
     {
