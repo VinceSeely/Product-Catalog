@@ -3,7 +3,9 @@ using System;
 
 namespace UnitTests
 {
-    public abstract class Tests
+
+    [TestFixture]
+    public abstract class BaseUnitTest
     {
         [SetUp]
         public void TestSetup()
