@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Product_Catalog.DataObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,11 +19,15 @@ namespace Product_Catalog.Services
 
         public void AddProduct(Product product)
         {
+            Console.WriteLine(product.Name);
             Product.Add(product);
+            Console.WriteLine(product.Id);
         }
 
         public void AddProductHistory(ProductHistory productHistory)
         {
+
+            Console.WriteLine(productHistory.ProductId);
             ProductHistory.Add(productHistory);
         }
 
@@ -33,6 +38,7 @@ namespace Product_Catalog.Services
 
         public void UpdateProduct(Product product)
         {
+            Console.WriteLine(product.Name);
             var productBeingUpdated = Product.Find(product.Id);
             productBeingUpdated.Name = product.Name;
             productBeingUpdated.Price = product.Price;

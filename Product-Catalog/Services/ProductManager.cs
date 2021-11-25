@@ -43,6 +43,7 @@ namespace Product_Catalog.Services
             else
             {
                 productCatalogContext.AddProduct(product);
+                productCatalogContext.SaveChanges();
                 var productHistory = new ProductHistory()
                 {
                     NewPrice = product.Price,
