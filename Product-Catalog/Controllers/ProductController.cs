@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Product_Catalog.DataObjects;
 using Product_Catalog.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Product_Catalog.Controllers
@@ -22,9 +23,9 @@ namespace Product_Catalog.Controllers
 
         // GET: api/<ProductController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Product> GetProducts()
         {
-            return new string[] { "value1", "value2" };
+            return this._productManager.GetProducts();
         }
 
 
@@ -33,13 +34,6 @@ namespace Product_Catalog.Controllers
         public IEnumerable<ProductHistory> GetHistory(int id)
         {
             return this._productManager.GetHistory(id);
-        }
-
-        // GET api/<ProductController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST api/<ProductController>/update
@@ -54,6 +48,14 @@ namespace Product_Catalog.Controllers
         public bool AddProduct([FromBody] Product product)
         {
             return this._productManager.AddProduct(product);
+        }
+
+
+        // GET: api/<ProductController>/9
+        [HttpGet("{id}")]
+        public Product GetProduct(int id)
+        {
+            return this._productManager.GetProduct(id);
         }
     }
 }

@@ -132,4 +132,76 @@ namespace UnitTests.Controllers
             mockProductManager.Verify(x => x.GetHistory(id));
         }
     }
+
+
+    [TestFixture]
+    public class when_getting_a_list_of_products : ProductControllerTests
+    {
+        private int id;
+        private string name;
+        private double price;
+        private Product product;
+
+
+        protected override void Setup()
+        {
+            base.Setup();
+            id = 1;
+            name = "new product 1";
+            price = 2.4;
+            product = new Product()
+            {
+                Id = id,
+                Name = name,
+                Price = price
+            };
+        }
+
+        protected override void Run()
+        {
+            temp.GetProducts();
+        }
+
+        [Test]
+        public void then_the_list_of_products_specific_information_should_be_requested()
+        {
+            mockProductManager.Verify(x => x.GetProducts());
+        }
+    }
+
+
+    [TestFixture]
+    public class when_getting_a_products_information : ProductControllerTests
+    {
+        private int id;
+        private string name;
+        private double price;
+        private Product product;
+
+
+        protected override void Setup()
+        {
+            base.Setup();
+            id = 1;
+            name = "new product 1";
+            price = 2.4;
+            product = new Product()
+            {
+                Id = id,
+                Name = name,
+                Price = price
+            };
+        }
+
+        protected override void Run()
+        {
+            temp.GetProduct(id);
+        }
+
+        [Test]
+        public void then_the_product_specific_information_should_be_requested()
+        {
+            mockProductManager.Verify(x => x.GetProduct(id));
+        }
+    }
 }

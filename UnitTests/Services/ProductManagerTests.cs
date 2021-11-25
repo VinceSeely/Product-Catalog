@@ -222,4 +222,50 @@ namespace UnitTests.Services
             mockProductCatalog.Verify(x => x.GetHistory(1));
         }
     }
+
+    public class when_get_requesting_a_product : ProductManagerTests
+    {
+        private Product result;
+        private int id;
+
+        protected override void Setup()
+        {
+            base.Setup();
+            id = 1;
+        }
+
+        protected override void Run()
+        {
+            result = sut.GetProduct(1);
+        }
+
+        [Test]
+        public void then_the_get_product_method_should_be_called_on_the_db_context()
+        {
+            mockProductCatalog.Verify(x => x.GetProduct(id));
+        }
+    }
+
+    public class when_get_requesting_a_product_list : ProductManagerTests
+    {
+        private IEnumerable<Product> result;
+        private int id;
+
+        protected override void Setup()
+        {
+            base.Setup();
+            id = 1;
+        }
+
+        protected override void Run()
+        {
+            result = sut.GetProducts();
+        }
+
+        [Test]
+        public void then_the_get_product_method_should_be_called_on_the_db_context()
+        {
+            mockProductCatalog.Verify(x => x.GetProducts());
+        }
+    }
 }

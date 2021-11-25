@@ -19,15 +19,13 @@ namespace Product_Catalog.Services
 
         public void AddProduct(Product product)
         {
-            Console.WriteLine(product.Name);
             Product.Add(product);
-            Console.WriteLine(product.Id);
         }
 
         public void AddProductHistory(ProductHistory productHistory)
         {
 
-            Console.WriteLine(productHistory.ProductId);
+            productHistory.UpdateTime = DateTime.UtcNow;
             ProductHistory.Add(productHistory);
         }
 
@@ -36,9 +34,18 @@ namespace Product_Catalog.Services
             return ProductHistory.Where(x => x.ProductId == product);
         }
 
+        public Product GetProduct(int id)
+        {
+            return Product.First(x => x.Id == id);
+        }
+
+        public IEnumerable<Product> GetProducts()
+        {
+            return Product.ToList();
+        }
+
         public void UpdateProduct(Product product)
         {
-            Console.WriteLine(product.Name);
             var productBeingUpdated = Product.Find(product.Id);
             productBeingUpdated.Name = product.Name;
             productBeingUpdated.Price = product.Price;

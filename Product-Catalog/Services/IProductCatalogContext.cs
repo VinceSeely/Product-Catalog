@@ -15,5 +15,7 @@ namespace Product_Catalog.Services
         DbSet<ProductHistory> ProductHistory { get; set; }
 
         IEnumerable<ProductHistory> GetHistory(int product);
+        Product GetProduct(int id);
+        IEnumerable<Product> GetProducts();
     }
 }

@@ -59,5 +59,15 @@ namespace Product_Catalog.Services
         {
             return productCatalogContext.GetHistory(product);
         }
+
+        public IEnumerable<Product> GetProducts()
+        {
+            return productCatalogContext.GetProducts();
+        }
+
+        public Product GetProduct(int id)
+        {
+            return productCatalogContext.GetProduct(id);
+        }
     }
 }
