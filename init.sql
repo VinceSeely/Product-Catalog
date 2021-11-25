@@ -14,6 +14,7 @@ CREATE TABLE ProductHistory(
     ProductHistoryId INT NOT NULL AUTO_INCREMENT,
     ProductId INT,
     NewPrice  FLOAT(2),
+    NewName VARCHAR(255),
     UpdateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(ProductHistoryId)
 );

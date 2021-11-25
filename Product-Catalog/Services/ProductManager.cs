@@ -25,7 +25,8 @@ namespace Product_Catalog.Services
                 var productHistory = new ProductHistory()
                 {
                     NewPrice = product.Price,
-                    ProductId = product.Id
+                    ProductId = product.Id,
+                    NewName = product.Name
                 };
                 productCatalogContext.AddProductHistory(productHistory);
                 productCatalogContext.SaveChanges();
@@ -47,7 +48,8 @@ namespace Product_Catalog.Services
                 var productHistory = new ProductHistory()
                 {
                     NewPrice = product.Price,
-                    ProductId = product.Id
+                    ProductId = product.Id,
+                    NewName = product.Name
                 };
                 productCatalogContext.AddProductHistory(productHistory);
                 productCatalogContext.SaveChanges();

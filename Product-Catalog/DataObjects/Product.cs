@@ -14,6 +14,7 @@ namespace Product_Catalog.DataObjects
         public int ProductHistoryId { get; set; }
         public int ProductId { get; set; }
         public double NewPrice { get; set; }
+        public string NewName { get; set; }
         public DateTime UpdateTime { get; set; }
 
         public override bool Equals(object obj)

@@ -29,13 +29,14 @@ namespace Product_Catalog
             // Register your own things directly with Autofac here. Don't
             // call builder.Populate(), that happens in AutofacServiceProviderFactory
             // for you.
-            builder.RegisterModule(new ProductCatalogModule());
+            builder.RegisterModule(new ProductCatalogModule(Configuration));
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var connectionString = Configuration.GetValue<string>("ConnectionString");
             //services.AddDbContext<ProductCatalogContext>(
             //    options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
         }

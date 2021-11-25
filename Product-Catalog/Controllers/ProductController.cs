@@ -29,7 +29,7 @@ namespace Product_Catalog.Controllers
         }
 
 
-        // GET: api/<ProductController>
+        // GET: api/<ProductController>/history/2
         [HttpGet("history/{id}")]
         public IEnumerable<ProductHistory> GetHistory(int id)
         {
