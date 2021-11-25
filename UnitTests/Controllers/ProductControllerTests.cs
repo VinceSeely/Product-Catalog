@@ -30,7 +30,7 @@ namespace UnitTests.Controllers
     }
 
     [TestFixture]
-    public class when_adding_a_product_to_the_catalog : ProductControllerTests
+    public class when_updating_a_product_in_the_catalog : ProductControllerTests
     {
         private int id;
         private string name;
@@ -52,23 +52,84 @@ namespace UnitTests.Controllers
 
         protected override void Run()
         {
-            temp.Post(product);
+            temp.UpdateProduct(product);
         }
 
         [Test]
         public void then_the_product_should_be_submitted_to_the_product_manager_to_be_added()
         {
-            mockProductManager.Verify(x => x.CreateProduct(product));
+            mockProductManager.Verify(x => x.UpdateProduct(product));
         }
     }
 
     [TestFixture]
-    public class when_updating_a_product_in_the_catalog : ProductControllerTests
+    public class when_adding_a_product_to_the_catalog : ProductControllerTests
     {
+        private int id;
+        private string name;
+        private double price;
+        private Product product;
+
+
+        protected override void Setup()
+        {
+            base.Setup();
+            id = 1;
+            name = "new product 1";
+            price = 2.4;
+            product = new Product()
+            {
+                Id = id,
+                Name = name,
+                Price = price
+            };
+        }
 
         protected override void Run()
         {
-            throw new NotImplementedException();
+            temp.AddProduct(product);
+        }
+
+        [Test]
+        public void then_the_product_should_be_submitted_to_the_product_manager_to_be_added()
+        {
+            mockProductManager.Verify(x => x.AddProduct(product));
+        }
+    }
+
+
+    [TestFixture]
+    public class when_getting_the_history_of_a_product : ProductControllerTests
+    {
+        private int id;
+        private string name;
+        private double price;
+        private Product product;
+
+
+        protected override void Setup()
+        {
+            base.Setup();
+            id = 1;
+            name = "new product 1";
+            price = 2.4;
+            product = new Product()
+            {
+                Id = id,
+                Name = name,
+                Price = price
+            };
+        }
+
+        protected override void Run()
+        {
+            temp.GetHistory(id);
+        }
+
+        [Test]
+        public void then_the_product_should_be_submitted_to_the_product_manager_to_be_added()
+        {
+            mockProductManager.Verify(x => x.GetHistory(id));
         }
     }
 }

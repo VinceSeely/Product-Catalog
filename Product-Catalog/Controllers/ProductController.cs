@@ -27,6 +27,14 @@ namespace Product_Catalog.Controllers
             return new string[] { "value1", "value2" };
         }
 
+
+        // GET: api/<ProductController>
+        [HttpGet("history/{id}")]
+        public IEnumerable<ProductHistory> GetHistory(int id)
+        {
+            return this._productManager.GetHistory(id);
+        }
+
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -34,23 +42,18 @@ namespace Product_Catalog.Controllers
             return "value";
         }
 
-        // POST api/<ProductController>
-        [HttpPost]
-        public void Post([FromBody] Product value)
+        // POST api/<ProductController>/update
+        [HttpPost("update")]
+        public void UpdateProduct([FromBody] Product product)
         {
-            this._productManager.CreateProduct(value);
+            this._productManager.UpdateProduct(product);
         }
 
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT api/<ProductController>/add
+        [HttpPut("add")]
+        public bool AddProduct([FromBody] Product product)
         {
-        }
-
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return this._productManager.AddProduct(product);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace UnitTests
     [TestFixture]
     public abstract class BaseUnitTest
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void TestSetup()
         {
             Mock();
